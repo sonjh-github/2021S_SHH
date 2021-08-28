@@ -17,7 +17,11 @@ def get_occupiedLockerS_lockerIdxS(request):
     print(request.data)
     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
         #<class 'django.http.request.QueryDict'>
-        input = json.loads(request.data.get('_content')) 
+        try:
+            input = json.loads(request.data.get('_content')) 
+        except:
+            input = request.data.get('_content')
+        
         print(input)
     else:
         input = request.data
