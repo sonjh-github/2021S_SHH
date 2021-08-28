@@ -32,6 +32,7 @@ def get_occupiedLockerS_lockerIdxS(request):
     print(lockerIdxS)
     print(len(lockerIdxS))
     print(type(lockerIdxS))
+    print(type(lockerIdxS[0]))
     occupiedLockerS = list(
         OccupiedLocker.objects.filter(lockerIdx__in = lockerIdxS)
         #.order_by('lockerIdx')
