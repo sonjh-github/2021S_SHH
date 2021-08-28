@@ -1,5 +1,5 @@
 import re
-from django.db.models import Q
+from django.db.models import Q, manager
 
 from user.models import *
 from django.http.response import HttpResponse
@@ -18,17 +18,17 @@ def get_occupiedLockerS_stationUUID(request):
         #<class 'django.http.request.QueryDict'>
         input = json.loads(request.data.get('_content')) 
         print(input)
-    stationUUID = input['stationUUID']
+    else:
+        input = request.data
+    # 데이터는 ['1','2',"3",'4',"5"]의 형태로 들어와야 합니다.
+    lockerIdxS = input['lockerIdxS'][1:-1].replace('\'','').replace('\"','').replace(' ','').split(",")
 
-    lockerS = list(
-        Locker.objects
-        .filter(stationUUID = stationUUID).values_list('idx', flat = True)
-    )
     occupiedLockerS = list(
-        OccupiedLocker.objects.filter(lockerIdx__in = lockerS)
+        OccupiedLocker.objects.filter(lockerIdx__in = lockerIdxS)
+        .order_by('lockerIdx')
     )
     serializer = OccupiedLockerSerializer(occupiedLockerS, many = True)
-    print("VACANT LOCKER IN UUID:"+stationUUID+" => ")
+    print("VACANT LOCKER IN :"+lockerIdxS+" => ")
     print(serializer.data)
     return Response(serializer.data)
 @api_view(['POST'])
@@ -51,9 +51,8 @@ def create_occupiedLocker(request):
     # autoPayment = user.autoPayment
     else:
         input = request.data
-    
 
-    OccupiedLocker.objects.create(
+    occupiedLockerS = OccupiedLocker.objects.create(
         lockerIdx = input['lockerIdx'],
         password = input['password'],
         title = input['title'],
@@ -61,7 +60,8 @@ def create_occupiedLocker(request):
         trusterId = input['trusterId'],
         isPaid = False # 수종하기
     )
-    return HttpResponse('CREATE LOCKER USING')
+    serializer = OccupiedLockerSerializer(occupiedLockerS, many = True)
+    return Response(serializers.data)
 @api_view(['POST'])
 def update_occupiedLocker(request):
     # input
@@ -103,21 +103,21 @@ def delete_occupiedLocker(request):
     serializer = serializers.OccupiedLockerSerializer(occupiedLocker)
     occupiedLocker.delete()
     return Response(serializer.data)
-@api_view(['POST'])
-def get_all_lockerS_onStation(request):
-    if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
-        #<class 'django.http.request.QueryDict'>
-        input = json.loads(request.data.get('_content')) 
-        print(input)
-    lockerS = Locker.objects.filter(stationUUID = input['stationUUID'])
-    serializer = serializers.LockerSerializer(lockerS)
-    return Response(serializer.data)
-@api_view(['POST'])
-def get_all_occupiedLockerS_onStation(request):
-    if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
-        #<class 'django.http.request.QueryDict'>
-        input = json.loads(request.data.get('_content')) 
-        print(input)
-    occupiedLockerS = OccupiedLocker.objects.filter(lockerId__in = input['lockerIdS'])
-    serializer = serializers.OcupiedLockerSerializer(occupiedLockerS)
-    return Response(serializer.data)
+# @api_view(['POST'])
+# def get_all_lockerS_onStation(request):
+#     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
+#         #<class 'django.http.request.QueryDict'>
+#         input = json.loads(request.data.get('_content')) 
+#         print(input)
+#     lockerS = Locker.objects.filter(stationUUID = input['stationUUID'])
+#     serializer = serializers.LockerSerializer(lockerS)
+#     return Response(serializer.data)
+# @api_view(['POST'])
+# def get_occupiedLockerS_onStation(request):
+#     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
+#         #<class 'django.http.request.QueryDict'>
+#         input = json.loads(request.data.get('_content')) 
+#         print(input)
+#     occupiedLockerS = OccupiedLocker.objects.filter(lockerId__in = input['lockerIdS'])
+#     serializer = serializers.OcupiedLockerSerializer(occupiedLockerS)
+#     return Response(serializer.data)
