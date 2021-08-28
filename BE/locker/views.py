@@ -99,7 +99,7 @@ def update_occupiedLocker(request):
 
     return HttpResponse('UPDATE LOCKER USING')
 @api_view(['POST'])
-def delete_occupiedLocker(request):
+def delete_occupiedLocker_idx(request):
     # input
     # - idx (required)
     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
@@ -129,3 +129,23 @@ def delete_occupiedLocker(request):
 #     occupiedLockerS = OccupiedLocker.objects.filter(lockerId__in = input['lockerIdS'])
 #     serializer = serializers.OcupiedLockerSerializer(occupiedLockerS)
 #     return Response(serializer.data)
+@api_view(['POST'])
+def get_occupiedLocker_trusterId(request):
+    # input
+    # - idx (required)
+    print(request.data)
+    print(type(request.data))
+    if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
+        #<class 'django.http.request.QueryDict'>
+        input = json.loads(request.data.get('_content')) 
+        print(input)
+    # userS = list(User.objects.filter(userId = input['trusterId']))
+    # user = userS[0]
+    # autoPayment = user.autoPayment
+    else:
+        input = request.data
+    occupiedLockerS = list(OccupiedLocker.objects.filter(trusterId = input['trusterId']))
+    occupiedLocker = occupiedLockerS[0]
+    serializer = serializers.OccupiedLockerSerializer(occupiedLocker)
+    occupiedLocker.delete()
+    return Response(serializer.data)
