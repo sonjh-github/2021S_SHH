@@ -30,6 +30,7 @@ def get_occupiedLockerS_lockerIdxS(request):
     for idx, lockerIdx in enumerate(lockerIdxS):
         lockerIdxS[idx] = int(lockerIdx)
     print(lockerIdxS)
+    print(len(lockerIdxS))
     occupiedLockerS = list(
         OccupiedLocker.objects.filter(lockerIdx__in = lockerIdxS)
         #.order_by('lockerIdx')
