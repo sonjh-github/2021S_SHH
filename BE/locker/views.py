@@ -14,6 +14,7 @@ import json
 def get_occupiedLockerS_lockerIdxS(request):
     # input
     # - stationName (required)
+    print(request.data)
     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
         #<class 'django.http.request.QueryDict'>
         input = json.loads(request.data.get('_content')) 
@@ -21,8 +22,9 @@ def get_occupiedLockerS_lockerIdxS(request):
     else:
         input = request.data
     # 데이터는 ['1','2',"3",'4',"5"]의 형태로 들어와야 합니다.
-    lockerIdxS = input['lockerIdxS'][1:-1].replace('\'','').replace('\"','').replace(' ','').split(",")
-
+    lockerIdxS = input['lockerIdxS'].replace('\'','').replace('\"','').replace(' ','').split(",")
+    for idx, lockerIdx in enumerate(lockerIdxS):
+        lockerIdxS[idx] = int(lockerIdx)
     occupiedLockerS = list(
         OccupiedLocker.objects.filter(lockerIdx__in = lockerIdxS)
         .order_by('lockerIdx')
