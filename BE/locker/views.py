@@ -39,7 +39,7 @@ def get_occupiedLockerS_lockerIdxS(request):
     )
     print("serial")
     serializer = OccupiedLockerSerializer(occupiedLockerS, many = True)
-    print("VACANT LOCKER IN :"+lockerIdxS+" => ")
+    print("VACANT LOCKER IN :"+str(lockerIdxS)+" => ")
     print(serializer.data)
     return Response(serializer.data)
 @api_view(['POST'])
