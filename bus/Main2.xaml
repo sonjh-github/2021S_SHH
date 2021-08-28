@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage x:Class="BoxStation.bus.Bus"
+<ContentPage x:Class="BoxStation.bus.Main2"
     xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BoxStation.bus" 
+    xmlns:local="clr-namespace:BoxStation.bus" >
     WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
     HeightSpecification="{Static LayoutParamPolicies.MatchParent}" >
     <ContentPage.AppBar >
@@ -11,15 +11,14 @@
     </ContentPage.AppBar>
 
     <ContentPage.Content>
-        
         <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
               HeightSpecification="{Static LayoutParamPolicies.MatchParent}">
 
-            
+
             <View.Layout>
-                    <LinearLayout LinearOrientation="Vertical"
+                <LinearLayout LinearOrientation="Vertical"
                                       LinearAlignment="Begin"/>
-                </View.Layout>
+            </View.Layout>
 
             <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
                       HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
@@ -61,46 +60,31 @@
                                   LinearOrientation="Horizontal"/>
                 </View.Layout>
 
-                <View x:Name="kiosk">
-                    <View.Layout>
-                        <LinearLayout LinearAlignment="Begin"
-                                  LinearOrientation="Vertical"/>
-                    </View.Layout>
-
-                    <Button Size="300,70"
-                    Margin="30,30,0,30"
-                    BackgroundColor="Blue"
-                    Text="오늘의 미세먼지?"
-                    Clicked="Button_Clicked_1"/>
-
-                    <TextLabel 
-                        Text="지금 대전 미세먼지 농도가 궁금하다면 눌러보세요."
-                        x:Name="dust_val"
-                        Margin="30,0,50,0"/>
-                    
-                    <Button Size= "300,70"
-                    Margin="30,0,50,0"
+                <Button Size="300,300"
+                    Margin="40,0,100,40"
                     BackgroundColor="Green"
-                    Text="오늘의 날씨?"
-                    Clicked="Button_Clicked"/>
-
-                    <TextLabel
-                        Text="지금 대전의 날씨가 궁금하다면 눌러보세요."
-                        x:Name="weather_val"
-                        Margin="30,0,0,0"
+                    Text="구매"
+                    PointSize="60"
+                    TouchEvent="Button_Clicked_1"
                     />
-                </View>
+
+                <Button Size= "300,300"
+                    Margin="40,0,100,40"
+                    BackgroundColor="Black"
+                    Text="보관"
+                    PointSize="60"
+                    TouchEvent="Button_TouchEvent"
+                    />
 
                 <Button Size="300,300"
-                    Margin="40,0,0,0"
-                    BackgroundColor="Black"
-                    Text="서비스 이용하기"
-                        PointSize="30"
-                        TouchEvent="Button_TouchEvent"></Button>
-
+                    Margin="40,0,100,0"
+                    BackgroundColor="Blue"
+                    Text="수거"
+                    PointSize="60"
+                    TouchEvent="Button_TouchEvent1"
+                    />
             </View>
-
         </View>
     </ContentPage.Content>
-    
+
 </ContentPage>

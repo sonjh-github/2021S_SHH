@@ -14,6 +14,18 @@ namespace BoxStation
         public ReservedList()
         {
             InitializeComponent();
+            //Set table title text size
+            //LG DISPLAY 1920 * 1080
+            List<double> ratio = new List<double>();
+            ratio.Add(Window.Instance.WindowSize.Width / 1920.0);
+            ratio.Add(Window.Instance.WindowSize.Height / 1080.0);
+
+            double minRatio = ratio.Min();
+            tableTextSize = (float)Math.Round(minRatio * 70);
+
+            reservedLocation.PointSize = tableTextSize;
+            reservedPw.PointSize = tableTextSize;
+            reservedCost.PointSize = tableTextSize;
 
 
             List<Data.Boxes> dataSource = new List<Data.Boxes>();
@@ -38,18 +50,7 @@ namespace BoxStation
             reservedList.Add(reservedListContainerView);
 
             
-            //Set table title text size
-            //LG DISPLAY 1920 * 1080
-            List<double> ratio = new List<double>();
-            ratio.Add(Window.Instance.WindowSize.Width / 1920.0);
-            ratio.Add(Window.Instance.WindowSize.Height / 1080.0);
-
-            double minRatio = ratio.Min();
-            tableTextSize = (float)Math.Round(minRatio * 70);
-
-            reservedLocation.PointSize = tableTextSize;
-            reservedPw.PointSize = tableTextSize;
-            reservedCost.PointSize = tableTextSize;
+            
             
 
         }

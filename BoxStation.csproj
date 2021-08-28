@@ -20,6 +20,13 @@
     <None Remove="box\Reserved.xaml" />
     <None Remove="box\ReservedListPopup.xaml" />
     <None Remove="bus\Bus.xaml" />
+    <None Remove="bus\Confirm.xaml" />
+    <None Remove="bus\Lock.xaml" />
+    <None Remove="bus\Main2.xaml" />
+    <None Remove="bus\Money.xaml" />
+    <None Remove="bus\Purchase.xaml" />
+    <None Remove="bus\Take.xaml" />
+    <None Remove="bus\Thankyou.xaml" />
     <None Remove="mypage\MyPage.xaml" />
     <None Remove="NaviPage.xaml" />
     <None Remove="ReservedList.xaml" />
@@ -47,6 +54,27 @@
     <EmbeddedResource Include="bus\Bus.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="bus\Confirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Main2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Lock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Take.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Thankyou.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Money.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bus\Purchase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="mypage\MyPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -66,6 +94,12 @@
     <PackageReference Include="Tizen.NET" Version="9.0.0.16500" />
     <PackageReference Include="Tizen.NET.Internals" Version="9.0.0.16500" />
     <PackageReference Include="Tizen.NUI.XamlBuild" Version="1.0.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="bus\Main1 - 복사.xaml.cs">
+      <DependentUpon>Main2.xaml.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="BoxStation.bus.Purchase"
+    xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BoxStation.bus"
+    WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
+    HeightSpecification="{Static LayoutParamPolicies.MatchParent}" >
+    <ContentPage.AppBar >
+        <AppBar x:Name="busAppBar"
+            Title="Bus"/>
+    </ContentPage.AppBar>
+
+    <ContentPage.Content>
+        <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
+              HeightSpecification="{Static LayoutParamPolicies.MatchParent}">
+
+
+            <View.Layout>
+                <LinearLayout LinearOrientation="Vertical"
+                                      LinearAlignment="Begin"/>
+            </View.Layout>
+
+            <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      BackgroundColor="White"
+                      Weight="0.6">
+                <ScrollableBase x:Name="Scroller"
+                      ScrollingDirection="Vertical"
+                      WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      Padding="20,10,10,20">
+
+                    <ScrollableBase.Layout>
+                        <LinearLayout LinearOrientation="Vertical" LinearAlignment="CenterHorizontal" />
+                    </ScrollableBase.Layout>
+
+                    <!--<View x:Name="busList"
+                      WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      CellHorizontalAlignment="Center"
+                           Margin="20,20,20,20"
+                           Padding="20,20,20,20"
+                      BackgroundColor="White"
+                      >
+                    </View>-->
+
+                    <View x:Name="bus1" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus2" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus3" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus4" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+
+                </ScrollableBase>
+            </View>
+            <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      Weight="0.3">
+                <View.Layout>
+                    <LinearLayout LinearAlignment="Begin"
+                                  LinearOrientation="Vertical"/>
+                </View.Layout>
+
+                <TextLabel Text="구매할 물품을 클릭하세요."
+                           PointSize="40">
+                </TextLabel>
+
+                <View>
+                    <View.Layout>
+                        <LinearLayout LinearAlignment="Begin"
+                                    LinearOrientation="Horizontal">
+                        </LinearLayout>
+                    </View.Layout>
+
+                    <View>
+                        <View.Layout>
+                            <LinearLayout LinearAlignment="Begin"
+                                          LinearOrientation="Vertical">
+                                
+                            </LinearLayout>
+                        </View.Layout>
+
+                        <TextLabel
+                           Text="1번 사물함"
+                            Margin="120,0,0,0">
+                        </TextLabel>
+                        
+                        <Button Size="300,300"
+                        Margin="40,0,0,0"
+                        BackgroundImage="*Resource*/images/um.png"
+                        TouchEvent="Button_TouchEvent"
+                        PointSize="60"/>
+
+                        <TextLabel
+                            Text="5000원"
+                            Margin="140,0,0,0">
+                        </TextLabel>
+
+                    </View>
+
+                    <View>
+                        <View.Layout>
+                            <LinearLayout LinearAlignment="Begin"
+                                          LinearOrientation="Vertical">
+
+                            </LinearLayout>
+                        </View.Layout>
+
+                        <TextLabel
+                           Text="2번 사물함"
+                            Margin="140,0,0,0">
+                        </TextLabel>
+
+                        <Button Size="300,300"
+                        Margin="40,0,0,0"
+                        BackgroundImage="*Resource*/images/kit.png"
+                        TouchEvent="Button_TouchEvent"
+                        PointSize="60"
+                        />
+
+                        <TextLabel
+                            Text="6000원"
+                            Margin="150,0,0,0">
+                        </TextLabel>
+                    </View>
+
+                    <View>
+                        <View.Layout>
+                            <LinearLayout LinearAlignment="Begin"
+                                          LinearOrientation="Vertical">
+
+                            </LinearLayout>
+                        </View.Layout>
+
+                        <TextLabel
+                           Text="3번 사물함"
+                            Margin="130,0,0,0">
+                        </TextLabel>
+
+                        <Button Size="300,300"
+                        Margin="40,0,0,0"
+                        BackgroundImage="*Resource*/images/tissue.jpg"
+                        TouchEvent="Button_TouchEvent"
+                        PointSize="60"
+                        />
+
+                        <TextLabel
+                            Text="2000원"
+                            Margin="150,0,0,0">
+                        </TextLabel>
+                    </View>
+                </View>
+            </View>
+        </View>
+    </ContentPage.Content>
+
+</ContentPage>
