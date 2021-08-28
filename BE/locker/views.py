@@ -37,7 +37,7 @@ def get_occupiedLockerS_lockerIdxS(request):
         OccupiedLocker.objects.filter(lockerIdx__in = lockerIdxS)
         #.order_by('lockerIdx')
     )
-
+    print("serial")
     serializer = OccupiedLockerSerializer(occupiedLockerS, many = True)
     print("VACANT LOCKER IN :"+lockerIdxS+" => ")
     print(serializer.data)
