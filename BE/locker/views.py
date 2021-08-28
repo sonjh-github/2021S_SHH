@@ -11,7 +11,7 @@ import json
 ## 가져오는..
 
 @api_view(['POST'])
-def get_occupiedLockerS_stationUUID(request):
+def get_occupiedLockerS_lockerIdxS(request):
     # input
     # - stationName (required)
     if(str(type(request.data)) == '<class \'django.http.request.QueryDict\'>'):
