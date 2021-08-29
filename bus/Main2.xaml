@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="BoxStation.bus.Main2"
+    xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BoxStation.bus" >
+    WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
+    HeightSpecification="{Static LayoutParamPolicies.MatchParent}" >
+    <ContentPage.AppBar >
+        <AppBar x:Name="busAppBar"
+            Title="Bus"/>
+    </ContentPage.AppBar>
+
+    <ContentPage.Content>
+        <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}" 
+              HeightSpecification="{Static LayoutParamPolicies.MatchParent}">
+
+
+            <View.Layout>
+                <LinearLayout LinearOrientation="Vertical"
+                                      LinearAlignment="Begin"/>
+            </View.Layout>
+
+            <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      BackgroundColor="White"
+                      Weight="0.6">
+                <ScrollableBase x:Name="Scroller"
+                      ScrollingDirection="Vertical"
+                      WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      Padding="20,10,10,20">
+
+                    <ScrollableBase.Layout>
+                        <LinearLayout LinearOrientation="Vertical" LinearAlignment="CenterHorizontal" />
+                    </ScrollableBase.Layout>
+
+                    <!--<View x:Name="busList"
+                      WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      CellHorizontalAlignment="Center"
+                           Margin="20,20,20,20"
+                           Padding="20,20,20,20"
+                      BackgroundColor="White"
+                      >
+                    </View>-->
+
+                    <View x:Name="bus1" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus2" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus3" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+                    <View x:Name="bus4" Margin="20,20,20,20" Padding="20,20,20,20"></View>
+
+                </ScrollableBase>
+            </View>
+
+            <View WidthSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      HeightSpecification="{Static LayoutParamPolicies.MatchParent}"
+                      Weight="0.3">
+                <View.Layout>
+                    <LinearLayout LinearAlignment="Begin"
+                                  LinearOrientation="Horizontal"/>
+                </View.Layout>
+
+                <Button Size="300,300"
+                    Margin="40,0,100,40"
+                    BackgroundColor="Green"
+                    Text="구매"
+                    PointSize="60"
+                    TouchEvent="Button_Clicked_1"
+                    />
+
+                <Button Size= "300,300"
+                    Margin="40,0,100,40"
+                    BackgroundColor="Black"
+                    Text="보관"
+                    PointSize="60"
+                    TouchEvent="Button_TouchEvent"
+                    />
+
+                <Button Size="300,300"
+                    Margin="40,0,100,0"
+                    BackgroundColor="Blue"
+                    Text="수거"
+                    PointSize="60"
+                    TouchEvent="Button_TouchEvent1"
+                    />
+            </View>
+        </View>
+    </ContentPage.Content>
+
+</ContentPage>
