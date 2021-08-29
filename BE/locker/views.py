@@ -145,7 +145,5 @@ def get_occupiedLocker_trusterId(request):
     else:
         input = request.data
     occupiedLockerS = list(OccupiedLocker.objects.filter(trusterId = input['trusterId']))
-    occupiedLocker = occupiedLockerS[0]
-    serializer = serializers.OccupiedLockerSerializer(occupiedLocker)
-    occupiedLocker.delete()
+    serializer = serializers.OccupiedLockerSerializer(occupiedLockerS, many= True)
     return Response(serializer.data)
